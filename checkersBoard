@@ -1,0 +1,47 @@
+package checkers;
+
+
+
+public class checkersBoard {
+	
+	 static int board[][] = new int[8][8];
+	 // 1 -> black
+	 // 2 -> red
+	 
+	 public static int dispBoard( int x, int y,int[][] array){
+		 return array[x][y];
+	 }
+	 public int[][] setBoard(int[][] array){
+		 for(int x = 0; x < array.length; x++){
+			 for(int y = 0; y < array[x].length; y++){
+				 if(x == 0 || x ==2){
+					 if(y%2==0){
+						 array[x][y] = 1;
+					 }
+				 }
+				  if(x == 1){
+					 if(y%2 == 1){
+						 array[x][y]=1;
+					 }
+				 }
+				  if(x == 5 || x ==7){
+					 if(y%2==0){
+						 array[x][y] = 2;
+					 }
+				 }
+				 if(x == 6){
+					 if(y%2 == 1){
+						 array[x][y]=2;
+					 }
+				 }
+				 
+			 }
+		 }
+		 return array;
+		 
+	 }
+	
+
+}
+
+
