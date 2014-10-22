@@ -1,0 +1,80 @@
+package checkers;
+
+public class checkersTiles {
+
+//	private int tileState = 0;
+//	
+//	
+//	public int getTile(){
+//		return tileState;
+//	}
+//	public void setTile(int tiley){
+//		tiley = tileState;
+//	}
+	
+	public int[][] moveTile(int x1, int y1, int x2, int y2, boolean turn){
+			if(turn == false){
+				if(x2 == x1+1 && y2 == y1+1){
+					if(checkersBoard.board[x2][y2]==0)
+						checkersBoard.board[x2][y2]=1;
+					}
+			}
+			else if(turn == true){
+				if(x2 == x1+1 && y2 == y1+1){
+					if(checkersBoard.board[x2][y2] == 0)
+						checkersBoard.board[x2][y2]=2;
+					}
+			}			
+			return checkersBoard.board;	
+		}	
+	public int[][] moveTileKing(int x1, int y1, int x2, int y2, boolean turn){
+		if(turn == false){
+			if((x2 == x1+1 && y2 == y1+1) || (x2 == x1-1 && y2 == y1 - 1)){
+				if(checkersBoard.board[x2][y2]==0)
+					checkersBoard.board[x2][y2]=1;
+				}
+		}
+		else if(turn == true){
+			if((x2 == x1+1 && y2 == y1+1) || (x2 == x1-1 && y2 == y1 - 1)){
+				if(checkersBoard.board[x2][y2] == 0)
+					checkersBoard.board[x2][y2]=2;
+				}
+			}		
+		return checkersBoard.board;		
+		}	
+	public int[][] takeTile(int x1, int y1, int x2, int y2, boolean turn){
+		if(turn == false){
+			if(x1 + 1 == x2 && y1 + 1 == y2){	
+				if(checkersBoard.board[x2][y2] == 2)
+				checkersBoard.board[x2][y2] =1;
+			}
+		}
+	else if(turn == true){
+		if(x1 + 1 == x2 && y1 + 1 == y2){	
+			if(checkersBoard.board[x2][y2] == 1)
+				checkersBoard.board[x2][y2] = 2;
+			}
+		}
+		return checkersBoard.board;		
+	}
+	
+	
+	public int[][] takeTileKing(int x1, int y1, int x2, int y2, boolean turn){
+				if(turn == false){
+					if((x1 + 1 == x2 && y1 + 1 == y2) || (x1 - 1 == x2 && y1 - 1 == y2)){	
+						if(checkersBoard.board[x2][y2] == 2)
+						checkersBoard.board[x2][y2] =1;
+					}
+				}
+			else if(turn == true){
+				if((x1 + 1 == x2 && y1 + 1 == y2) || (x1 - 1 == x2 && y1 - 1 == y2)){	
+					if(checkersBoard.board[x2][y2] == 1)
+						checkersBoard.board[x2][y2] = 2;
+				}
+			}
+		return checkersBoard.board;	
+	}
+}
+
+
+
