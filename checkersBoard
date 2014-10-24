@@ -1,17 +1,34 @@
-package checkers;
-
-
-
 public class checkersBoard {
 	
-	 static int board[][] = new int[8][8];
+	private static int board[][] = new int[8][8];
 	 // 1 -> black
 	 // 2 -> red
-	 
-	 public static int dispBoard( int x, int y,int[][] array){
-		 return array[x][y];
+	 // 3 -> black King
+	 // 4 -> red King
+	
+	
+	
+	public static int[][] getBoard(){
+		return board;
+	}
+	public static void setBoard(int x, int y, int color){
+		board[x][y] = color;
+	}
+	
+	 public static int dispBoard( int x, int y){
+		 return board[x][y];
 	 }
-	 public int[][] setBoard(int[][] array){
+	 public boolean gameCheckR(int r){
+		 if(r == 64) 
+		   return true;
+		 return false;
+	 }
+	 public boolean gameCheckB(int b){
+		 if(b == 64)
+			 return true;
+		 return false;
+	 }
+	 public int[][] boardStart(int[][] array){
 		 for(int x = 0; x < array.length; x++){
 			 for(int y = 0; y < array[x].length; y++){
 				 if(x == 0 || x ==2){
@@ -40,8 +57,5 @@ public class checkersBoard {
 		 return array;
 		 
 	 }
-	
-
 }
-
 
