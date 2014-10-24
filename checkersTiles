@@ -1,80 +1,95 @@
-package checkers;
-
 public class checkersTiles {
 
-//	private int tileState = 0;
-//	
-//	
-//	public int getTile(){
-//		return tileState;
-//	}
-//	public void setTile(int tiley){
-//		tiley = tileState;
-//	}
+	
+	private static int xCo = 0;
+	private static int yCo = 0;
+	private static int tileState = 0;
+	private static int empty =0;
+	private static int black = 1;
+	private static int red = 2;
+	private static int blackKing = 3;
+	private static int redKing = 4;
+	
+	
+	public void setTileState(int t){
+		tileState = t;
+	}
+	public int getTileState(){
+		return tileState;
+	}
+	public void setXCo(int x){
+		xCo = x;
+	}
+	public void setYCo(int y){
+		yCo = y;
+	}
+	public int getXCo(){
+		return xCo;
+	}
+	public int getYco(){
+		return yCo;
+	}
 	
 	public int[][] moveTile(int x1, int y1, int x2, int y2, boolean turn){
 			if(turn == false){
 				if(x2 == x1+1 && y2 == y1+1){
-					if(checkersBoard.board[x2][y2]==0)
-						checkersBoard.board[x2][y2]=1;
+					if(checkersBoard.dispBoard(x2,y2)==empty)
+						checkersBoard.setBoard(x2, y2,black);
 					}
 			}
 			else if(turn == true){
 				if(x2 == x1+1 && y2 == y1+1){
-					if(checkersBoard.board[x2][y2] == 0)
-						checkersBoard.board[x2][y2]=2;
+					if(checkersBoard.dispBoard(x2,y2) == empty)
+						checkersBoard.setBoard(x2,y2,red);
 					}
 			}			
-			return checkersBoard.board;	
+			return checkersBoard.getBoard();	
 		}	
 	public int[][] moveTileKing(int x1, int y1, int x2, int y2, boolean turn){
 		if(turn == false){
 			if((x2 == x1+1 && y2 == y1+1) || (x2 == x1-1 && y2 == y1 - 1)){
-				if(checkersBoard.board[x2][y2]==0)
-					checkersBoard.board[x2][y2]=1;
+				if(checkersBoard.dispBoard(x2,y2)==empty)
+					checkersBoard.setBoard(x2, y2, blackKing);
 				}
 		}
 		else if(turn == true){
 			if((x2 == x1+1 && y2 == y1+1) || (x2 == x1-1 && y2 == y1 - 1)){
-				if(checkersBoard.board[x2][y2] == 0)
-					checkersBoard.board[x2][y2]=2;
+				if(checkersBoard.dispBoard(x2,y2) == empty)
+					checkersBoard.setBoard(x2,y2,redKing);
 				}
 			}		
-		return checkersBoard.board;		
+		return checkersBoard.getBoard();		
 		}	
 	public int[][] takeTile(int x1, int y1, int x2, int y2, boolean turn){
 		if(turn == false){
 			if(x1 + 1 == x2 && y1 + 1 == y2){	
-				if(checkersBoard.board[x2][y2] == 2)
-				checkersBoard.board[x2][y2] =1;
+				if(checkersBoard.dispBoard(x2,y2) == red || checkersBoard.dispBoard(x2,y2)==redKing)
+				checkersBoard.setBoard(x2,y2,black);
 			}
 		}
 	else if(turn == true){
 		if(x1 + 1 == x2 && y1 + 1 == y2){	
-			if(checkersBoard.board[x2][y2] == 1)
-				checkersBoard.board[x2][y2] = 2;
+			if(checkersBoard.dispBoard(x2,y2) == black || checkersBoard.dispBoard(x2,y2) == blackKing)
+				checkersBoard.setBoard(x2,y2,red);
 			}
 		}
-		return checkersBoard.board;		
+		return checkersBoard.getBoard();		
 	}
 	
 	
 	public int[][] takeTileKing(int x1, int y1, int x2, int y2, boolean turn){
 				if(turn == false){
 					if((x1 + 1 == x2 && y1 + 1 == y2) || (x1 - 1 == x2 && y1 - 1 == y2)){	
-						if(checkersBoard.board[x2][y2] == 2)
-						checkersBoard.board[x2][y2] =1;
+						if(checkersBoard.dispBoard(x2,y2)== red || checkersBoard.dispBoard(x2, y2) == redKing)
+						checkersBoard.setBoard(x2,y2,blackKing);
 					}
 				}
 			else if(turn == true){
 				if((x1 + 1 == x2 && y1 + 1 == y2) || (x1 - 1 == x2 && y1 - 1 == y2)){	
-					if(checkersBoard.board[x2][y2] == 1)
-						checkersBoard.board[x2][y2] = 2;
+					if(checkersBoard.dispBoard(x2,y2) == black || checkersBoard.dispBoard(x2, y2) == blackKing)
+						checkersBoard.setBoard(x2,y2, redKing);
 				}
 			}
-		return checkersBoard.board;	
+		return checkersBoard.getBoard();	
 	}
 }
-
-
-
